@@ -42,9 +42,11 @@ class Program {
             Console.WriteLine("     vpn [-a|--add-account] HOSTNAME USERNAME PASSWORD");
             Console.WriteLine("  3. To remove vpn account:");
             Console.WriteLine("     vpn [-d|--delete-account] HOSTNAME USERNAME");
-            Console.WriteLine("  4. To list vpn account:");
+            Console.WriteLine("  4. To remove all vpn account:");
+            Console.WriteLine("     vpn [-c|--clear-account]");
+            Console.WriteLine("  5. To list vpn account:");
             Console.WriteLine("     vpn [-l|--list-account]");;
-            Console.WriteLine("  5. To connect vpn:");
+            Console.WriteLine("  6. To connect vpn:");
             Console.WriteLine("     vpn [-s|--start]");
             Console.WriteLine("");
             Console.WriteLine("Samples:");
@@ -87,6 +89,11 @@ class Program {
             Console.WriteLine("----------------------------------------------");
             Console.WriteLine("Entry Name: " + cfg.EntryName);
             Console.WriteLine("----------------------------------------------");
+            break;
+        // delete all account (clear)
+        case "-c":
+        case "--clear-account":
+            cfg.DelAllVPN();
             break;
         /// start checking connection status and auto connect
         case "-s":

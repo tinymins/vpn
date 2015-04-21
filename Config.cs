@@ -87,6 +87,16 @@ class Config {
         WriteConfig();
     }
 
+    /// <summary>
+    /// Delete All VPN Config
+    /// </summary>
+    public void DelAllVPN() {
+        // delete all account
+        this.VPNs =  new VPN[0];
+        // save change
+        WriteConfig();
+    }
+
     public VPN[] GetVPNList() {
         return VPNs;
     }
