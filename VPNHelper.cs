@@ -72,6 +72,7 @@ class VPNHelper {
         } else if (ip != "") {
             // update entry
             this.AllUsersPhoneBook.Entries[name].PhoneNumber = ip;
+            this.AllUsersPhoneBook.Entries[name].Device = RasDevice.GetDeviceByName("(PPTP)", RasDeviceType.Vpn);
             this.AllUsersPhoneBook.Entries[name].Update();
         }
     }
