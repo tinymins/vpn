@@ -11,10 +11,15 @@ class Program {
         // default command is --start
         if (args.Length == 0) args = new string[] { "--start" };
 
+        // if app root exist config file then use it, else use user's personal root
+        string file = AppDomain.CurrentDomain.BaseDirectory + "vpn.bin";
+        if (!System.IO.File.Exists(file))
+            file = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal) + "\\vpn.bin";
+
         // try to get config file
         Config cfg;
         try {
-            cfg = new Config("vpn.bin");
+            cfg = new Config(file);
         } catch (Exception ex) {
             Console.WriteLine("Open config file failed, please check if config file has been occupied by other application.");
             return;
