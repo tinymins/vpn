@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DotRas;
+using System.Diagnostics;
 
 namespace VPN {
 class Program {
@@ -119,6 +120,12 @@ class Program {
                             // check if entry is busy
                             while (vpn.IsEntryBusy(cfg.EntryName)) {
                                 Console.WriteLine("Entry busy... Retry in 10 sec...");
+                                // ipconfig /release
+                                // ipconfig /renew
+                                Process p = new Process();
+                                p.StartInfo.FileName = "cmd.exe"; //exe,bat and so on
+                                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                                p.StartInfo.Arguments = "/c ipconfig /release && ipconfig /renew";
                                 System.Threading.Thread.Sleep(10000);
                             }
                             // try to connect
