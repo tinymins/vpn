@@ -81,15 +81,15 @@ class Program {
         // list account record
         case "-l":
         case "--list-account":
-            Console.WriteLine("----------------------------------------------");
-            Console.WriteLine("{0,-30}{1,-16}", "Host", "Username");
-            Console.WriteLine("----------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------");
+            Console.WriteLine(" {0,-50}{1,-16}", "Host", "Username");
+            Console.WriteLine("------------------------------------------------------------------");
             foreach (Config.VPN vpn in cfg.GetVPNList()) {
-                Console.WriteLine("{0,-30}{1,-16}", vpn.Hostname, vpn.Username);
+                Console.WriteLine(" {0,-50}{1,-16}", vpn.Hostname, vpn.Username);
             }
-            Console.WriteLine("----------------------------------------------");
-            Console.WriteLine("Entry Name: " + cfg.EntryName);
-            Console.WriteLine("----------------------------------------------");
+            Console.WriteLine("------------------------------------------------------------------");
+            Console.WriteLine(" Entry Name: " + cfg.EntryName);
+            Console.WriteLine("------------------------------------------------------------------");
             break;
         // delete all account (clear)
         case "-c":
