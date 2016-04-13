@@ -31,7 +31,7 @@ class Program {
         /// help
         case "-h":
         case "--help":
-            Console.WriteLine("This application is write to connect vpns with the function of auto switch account.");
+            Console.WriteLine("This application writes for connecting vpns with the function\nof auto switch account.");
             Console.WriteLine("source: https://github.com/tinymins/vpn");
             Console.WriteLine("usage: vpn [--help] [<command>] [<args>]");
             Console.WriteLine("");
