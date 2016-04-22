@@ -88,6 +88,38 @@ class Config {
     }
 
     /// <summary>
+    /// Change VPN Index
+    /// </summary>
+    /// <param name="hostname"></param>
+    /// <param name="username"></param>
+    /// <param name="newindex"></param>
+    public void ChangeVPNIndex(string hostname, string username, int newindex) {
+        // search vpn
+        int oldindex = -1;
+        for (int i = 0; i < this.VPNs.Length; i++) {
+            if (this.VPNs[i].Hostname == hostname && this.VPNs[i].Username == username) {
+                oldindex = i;
+            }
+        }
+        // change index
+        if (oldindex >= 0) {
+            VPN vpn = this.VPNs[oldindex];
+            newindex = Math.Max(Math.Min(newindex, 0), this.VPNs.Length);
+            if (oldindex < newindex) {
+                for (int i = oldindex; i < newindex; i++)
+                    this.VPNs[i] = this.VPNs[i + 1];
+                this.VPNs[newindex] = vpn;
+            } else if (oldindex > newindex) {
+                for (int i = oldindex; i > newindex; i--)
+                    this.VPNs[i] = this.VPNs[i - 1];
+                this.VPNs[newindex] = vpn;
+            }
+        }
+        // save change
+        WriteConfig();
+    }
+
+    /// <summary>
     /// Delete All VPN Config
     /// </summary>
     public void DelAllVPN() {

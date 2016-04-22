@@ -74,8 +74,18 @@ class Program {
         // delete account record
         case "-d":
         case "--delete-account":
-            if (CheckArgument(args, 3)) {
+            if (CheckArgument(args, 3))
+            {
                 cfg.DelVPN(args[1], args[2]);
+            }
+            break;
+        // delete account record
+        case "-i":
+        case "--change-index":
+            int newindex = 0;
+            if (CheckArgument(args, 4) && int.TryParse(args[3], out newindex))
+            {
+                cfg.ChangeVPNIndex(args[1], args[2], newindex - 1);
             }
             break;
         // list account record
