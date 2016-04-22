@@ -123,7 +123,7 @@ namespace VPN
             if (oldindex >= 0)
             {
                 VPN vpn = this.VPNs[oldindex];
-                newindex = Math.Max(Math.Min(newindex, 0), this.VPNs.Length);
+                newindex = Math.Min(Math.Max(newindex, 0), this.VPNs.Length - 1);
                 if (oldindex < newindex)
                 {
                     for (int i = oldindex; i < newindex; i++)
